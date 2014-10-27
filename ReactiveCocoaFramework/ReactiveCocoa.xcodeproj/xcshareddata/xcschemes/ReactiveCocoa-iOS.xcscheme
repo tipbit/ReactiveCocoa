@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0510"
+   LastUpgradeVersion = "0610"
    version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -64,6 +64,15 @@
       debugDocumentVersioning = "YES"
       debugXPCServices = "NO"
       allowLocationSimulation = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "88F440AA153DAC820097B4C3"
+            BuildableName = "libReactiveCocoa-iOS.a"
+            BlueprintName = "ReactiveCocoa-iOS"
+            ReferencedContainer = "container:ReactiveCocoa.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
