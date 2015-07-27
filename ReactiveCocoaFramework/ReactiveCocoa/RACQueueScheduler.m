@@ -7,7 +7,6 @@
 //
 
 #import "RACQueueScheduler.h"
-#import "RACBacktrace.h"
 #import "RACDisposable.h"
 #import "RACQueueScheduler+Subclass.h"
 #import "RACScheduler+Private.h"
@@ -16,9 +15,13 @@
 
 #pragma mark Lifecycle
 
+#if !OS_OBJECT_HAVE_OBJC_SUPPORT
+
 - (void)dealloc {
 	dispatch_release(_queue);
 }
+
+#endif
 
 - (id)initWithName:(NSString *)name queue:(dispatch_queue_t)queue {
 	NSCParameterAssert(queue != NULL);
@@ -26,7 +29,9 @@
 	self = [super initWithName:name];
 	if (self == nil) return nil;
 
+#if !OS_OBJECT_HAVE_OBJC_SUPPORT
 	dispatch_retain(queue);
+#endif
 	_queue = queue;
 
 	return self;
@@ -93,7 +98,9 @@
 
 	return [RACDisposable disposableWithBlock:^{
 		dispatch_source_cancel(timer);
+#if !OS_OBJECT_HAVE_OBJC_SUPPORT
 		dispatch_release(timer);
+#endif
 	}];
 }
 

@@ -7,7 +7,6 @@
 //
 
 #import "RACTargetQueueScheduler.h"
-#import "RACBacktrace.h"
 #import "RACQueueScheduler+Subclass.h"
 
 @implementation RACTargetQueueScheduler
@@ -29,7 +28,9 @@
 	self = [super initWithName:name queue:queue];
 	if (self == nil) return nil;
 
+#if !OS_OBJECT_HAVE_OBJC_SUPPORT
 	dispatch_release(queue);
+#endif
 
 	return self;
 }
